@@ -1,0 +1,64 @@
+﻿<Page x:Class="WPF_Client.Pages.Page_System"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_Client"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="System options page">
+
+    <Grid Background="#FF2E2367">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" UseLayoutRounding="False">
+            <Button x:Name="Button_RecreateDB" 
+                    BorderBrush="{x:Null}"   
+                    HorizontalAlignment="Left" 
+                    Background="#1e1647" Margin="3,3,3,3" Click="Button_RecreateDB_Click" Width="161.69"
+                    >
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Recycle"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="32" Height="32" Foreground="#FFC2D501" />
+                    <Label Padding="0" Foreground="#FFC2D501" FontSize="10">Recreate DB</Label>
+                </StackPanel>
+            </Button>
+            <Button x:Name="Button_Initialise" 
+                    BorderBrush="{x:Null}"   
+                    HorizontalAlignment="Left" 
+                    Background="#1e1647" Margin="3,3,3,3" Width="161.69" Click="Button_Initialise_Click"
+                    >
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="NewBox"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="32" Height="32" Foreground="#FFC2D501" />
+                    <Label Padding="0" Foreground="#FFC2D501" FontSize="10">Initialize</Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <Rectangle Grid.Column="1" >
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF3B2F77" Offset="0" />
+                    <GradientStop Color="#1e1647" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" UseLayoutRounding="False">
+            <Label   Grid.Column="1" Content="Server address and port:" Margin="0,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBox  Grid.Column="1" x:Name="TB_ServerAddress" Width="348" Background="#FF3D307D" Foreground="#FFC2D501" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,10" />
+            <Button x:Name="Button_NewServerAddress" 
+                    BorderBrush="{x:Null}"   
+                    HorizontalAlignment="Left" 
+                    Background="#1e1647" Margin="3,10,3,10" VerticalAlignment="Top" Click="Button_NewServerAddress_Click"
+                    >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <materialDesign:PackIcon Kind="Connection"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="32" Height="32" Foreground="#FFC2D501" />
+                    <Label Padding="0" Foreground="#FFC2D501" FontSize="10">OK</Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

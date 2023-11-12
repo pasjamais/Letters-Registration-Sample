@@ -1,0 +1,95 @@
+﻿<Page x:Class="WPF_Client.Pages.Page_Letter"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_Client"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="850"
+      Title="Letter page">
+    <Grid Background="#FF2E2367">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="145"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" UseLayoutRounding="False">
+            <Button x:Name="Button_SendLetter" 
+                    BorderBrush="{x:Null}"   
+                    HorizontalAlignment="Left" 
+                    Background="#1e1647" Click="Button_SendLetter_Click" Margin="3,3,3,3" Height="38" 
+                    >
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="EmailSend"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="32" Height="32" Foreground="#FFC2D501" />
+                    <Label Padding="0" Foreground="#FFC2D501">Send</Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Rectangle Grid.Column="1" Margin="3,0,-3,0" >
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF3B2F77" Offset="0" />
+                    <GradientStop Color="#1e1647" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" UseLayoutRounding="False">
+            <Label x:Name="Label_Date" Content="Date and time of sending:" Grid.Column="1" Margin="0,0,0,20" Visibility="Hidden"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" UseLayoutRounding="False">
+                <Label Content="Sender:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ComboBox x:Name="CB_Sender" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" Background="#FF3D307D" Foreground="#FFC2D501"  SelectedValuePath="Id"/>
+                <materialDesign:DialogHost  
+                    CloseOnClickAway="True">
+                    <materialDesign:DialogHost.DialogContent>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Margin="10,10,10,10" Text="Name:" />
+                            <TextBox
+                                        Width="200"  HorizontalAlignment="Stretch"
+                                        Margin="10,10,10,10" 
+                                        x:Name="TB_User_Name" 
+                                        AcceptsReturn="False"/>
+                            <TextBlock Text="Mail:" Margin="10,10,10,10" />
+                            <TextBox
+                                        Width="200"
+                                        Margin="10,10,10,10"
+                                        HorizontalAlignment="Stretch"
+                                        x:Name="TB_User_Email" 
+                                        AcceptsReturn="False"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button             x:Name="Button_Add_User"
+                                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                                    IsDefault="True"
+                                                    Margin="0 8 8 0"
+                                                    Content="Create"
+                                                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                                    CommandParameter="True" Click="Button_Add_User_Click"
+                                                  
+                                                        />
+                                <Button
+                                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                                    IsCancel="True"
+                                                    Margin="0 8 8 0"
+                                                    Content="Cancel"
+                                                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                                    CommandParameter="False">
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </materialDesign:DialogHost.DialogContent >
+                    <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Content="New person..."
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                                IsEnabled="True"
+                        BorderBrush="#FF6858B5" Background="#FF2E2367" Cursor="Hand" FontSize="11" Margin="5,0,5,0" Foreground="White"
+                                />
+                </materialDesign:DialogHost>
+
+                <Label Content="Addressee:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ComboBox x:Name="CB_Addressee"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" Background="#FF3D307D" Foreground="#FFC2D501"  SelectedValuePath="Id"/>
+            </StackPanel>
+            <Label  Content="Subject:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" />
+            <TextBox x:Name="TB_Subject" HorizontalAlignment="Left" TextWrapping="Wrap" Width="661" Background="#FF3D307D" Foreground="#FFC2D501" />
+            <Label Content="Letter text:" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="0,20,0,0" />
+            <TextBox x:Name="TB_Text" HorizontalAlignment="Left"  TextWrapping="Wrap" Width="662" Height="227" HorizontalScrollBarVisibility="Visible" AutomationProperties.IsRowHeader="True" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" Background="#FF3D307D" Foreground="#FFC2D501"/>
+        </StackPanel>
+    </Grid>
+</Page>

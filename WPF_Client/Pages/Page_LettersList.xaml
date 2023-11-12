@@ -1,0 +1,40 @@
+﻿<Page x:Class="WPF_Client.Pages.Page_LettersList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_Client"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Letter list page">
+
+    <Grid Background="#FF2E2367">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="145"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" UseLayoutRounding="False">
+            <Button x:Name="Button_OpenLetter" 
+                    BorderBrush="{x:Null}"   
+                    HorizontalAlignment="Left" 
+                    Background="#1e1647" Margin="3,3,3,3" Click="Button_OpenLetter_Click"
+                    >
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="MailboxOpen"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="32" Height="32" Foreground="#FFC2D501" />
+                    <Label Padding="0" Foreground="#FFC2D501">Open</Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <DataGrid x:Name="DataGridLettersList" Grid.Column="1" IsReadOnly="True"  SelectionMode="Single"
+                  d:ItemsSource="{d:SampleData ItemCount=5}" Foreground="#FFC2D501">
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF3B2F77"/>
+                    <GradientStop Color="#FF1E1647" Offset="1"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+        </DataGrid>
+    </Grid>
+</Page>
